@@ -3,8 +3,10 @@ import { useMutation, useQueryClient } from "react-query";
 import { addDiary } from "../api/diary";
 import Button from "../components/Buttons";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 function CreateForm() {
+  const navigate = useNavigate();
   const [author, setAuthor] = useState("");
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
@@ -51,9 +53,11 @@ function CreateForm() {
       content,
     };
     mutation.mutate(newDiary);
+    alert("일기 잘 썼어요~");
     setAuthor("");
     setTitle("");
     setContent("");
+    navigate(`/`);
   };
 
   return (

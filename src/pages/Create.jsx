@@ -33,6 +33,7 @@ const CreatePage = styled.div`
   padding: 10px;
   background-color: #586a95;
   height: 100vh;
+  box-sizing: border-box;
 `;
 const CreateHeader = styled.div`
   display: flex;

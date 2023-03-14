@@ -8,31 +8,39 @@ function Home() {
   const navigate = useNavigate();
 
   return (
-    <Stlayout>
-      <StHeader>
-        <h1 style={{ color: "white" }}>일기를 써보아요!</h1>
-        <Button
-          text={"추가하기"}
-          borderColor={"white"}
-          backgroundColor={"#586a95"}
-          onClick={() => {
-            navigate(`/create`);
-          }}
-        />
-      </StHeader>
-      <StMain>
-        <DiaryList />
-      </StMain>
-    </Stlayout>
+    <HomePage>
+      <Stlayout>
+        <StHeader>
+          <h1 style={{ color: "white" }}>일기를 써보아요!</h1>
+          <Button
+            text={"일기 쓸래요!"}
+            borderColor={"white"}
+            backgroundColor={"#586a95"}
+            onClick={() => {
+              navigate(`/create`);
+            }}
+          />
+        </StHeader>
+        <StMain>
+          <DiaryList />
+        </StMain>
+      </Stlayout>
+    </HomePage>
   );
 }
 
 export default Home;
 
+const HomePage = styled.div`
+  height: 100vh;
+  background-color: #586a95;
+`;
+
 export const Stlayout = styled.div`
   padding: 20px;
   background-color: #586a95;
-  height: 100vh;
+  /* height: 100vh; */
+  box-sizing: border-box;
 `;
 
 export const StHeader = styled.div`
@@ -46,6 +54,6 @@ export const StHeader = styled.div`
 
 export const StMain = styled.div`
   padding: 30px;
-  background-color: #d0deed;
+  background-color: white;
   border-radius: 50px;
 `;

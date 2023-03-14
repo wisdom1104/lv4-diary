@@ -18,7 +18,7 @@ function DiaryList() {
   return (
     <>
       <ListTitle>
-        <h2>- 작성한 일기들 -</h2>
+        <h2 style={{ color: "#586a95" }}>- 일기 구경하는 곳 -</h2>
       </ListTitle>
       <StDiarylist>
         {data.map((item) => {
@@ -44,7 +44,6 @@ const StDiarylist = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  background-color: #d0deed;
-  padding: 50px;
+  padding: 50px 30px;
   border-radius: 50px;
 `;
