@@ -55,4 +55,5 @@ export const StMain = styled.div`
   padding: 30px;
   background-color: white;
   border-radius: 50px;
+  min-height: 600px;
 `;
