@@ -1,20 +1,8 @@
 import React from "react";
-import { useQuery } from "react-query";
 import styled from "styled-components";
-import { getDiarys } from "../api/diary";
 import DiaryItem from "./DiaryItem";
 
-function DiaryList() {
-  const { isLoading, isError, data } = useQuery("diarys", getDiarys);
-
-  if (isLoading) {
-    return <p>로딩중입니다....!</p>;
-  }
-
-  if (isError) {
-    return <p>오류가 발생하였습니다...!</p>;
-  }
-
+function DiaryList({ data }) {
   return (
     <>
       <ListTitle>

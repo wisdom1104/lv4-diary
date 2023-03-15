@@ -13,5 +13,14 @@ const addDiary = async (newDiary) => {
 const removeDiary = async (id) => {
   await axios.delete(`${process.env.REACT_APP_SERVER_URL}/diarys/${id}`);
 };
-
-export { getDiarys, addDiary, removeDiary };
+const editDiary = async (payload) => {
+  await axios.patch(
+    `${process.env.REACT_APP_SERVER_URL}/diarys/${payload.id}`,
+    {
+      author: payload.author,
+      title: payload.title,
+      content: payload.content,
+    }
+  );
+};
+export { getDiarys, addDiary, removeDiary, editDiary };

@@ -4,9 +4,8 @@ import styled from "styled-components";
 import Button from "../components/Buttons";
 import DiaryList from "../components/DiaryList";
 
-function Home() {
+function Home({ data }) {
   const navigate = useNavigate();
-
   return (
     <HomePage>
       <Stlayout>
@@ -22,7 +21,7 @@ function Home() {
           />
         </StHeader>
         <StMain>
-          <DiaryList />
+          <DiaryList data={data} />
         </StMain>
       </Stlayout>
     </HomePage>
