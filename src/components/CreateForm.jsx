@@ -4,12 +4,16 @@ import { addDiary } from "../api/diary";
 import Button from "../components/Buttons";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import { useInput } from "../hooks/useInput";
 
 function CreateForm() {
   const navigate = useNavigate();
-  const [author, setAuthor] = useState("");
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+  // const [author, setAuthor] = useState("");
+  // const [title, setTitle] = useState("");
+  // const [content, setContent] = useState("");
+  const [author, setAuthor, authorHandler] = useInput("");
+  const [title, setTitle, titleHandler] = useInput("");
+  const [content, setContent, contentHandler] = useInput("");
   const authorInput = useRef();
   const titleInput = useRef();
   const contentInput = useRef();
@@ -29,19 +33,19 @@ function CreateForm() {
   });
   //유효성 검증 (글자 수 제한))
   const submitHandler = (e) => {
-    if (author.length <= 1 || author.length > 10) {
+    if (author.length < 1 || author.length > 10) {
       alert("작성자 이름은 1글자 이상, 10글자 이하입니다!");
       authorInput.current.focus();
       return;
     }
 
-    if (title.length <= 3 || title.length > 20) {
+    if (title.length < 3 || title.length > 20) {
       alert("제목은 3글자 이상, 20글자 이하입니다!");
       titleInput.current.focus();
       return;
     }
 
-    if (content.length <= 5 || content.length > 100) {
+    if (content.length < 5 || content.length > 100) {
       alert("내용은 5글자 이상, 100글자 이하입니다!");
       contentInput.current.focus();
       return;
@@ -72,29 +76,24 @@ function CreateForm() {
           placeholder="작성자 이름을 적어주세요~"
           value={author}
           ref={authorInput}
-          onChange={(e) => {
-            setAuthor(e.target.value);
-          }}
+          onChange={authorHandler}
         />
         <DiaryTitle
           type="text"
           placeholder="일기 제목을 적어주세요~"
           ref={titleInput}
           value={title}
-          onChange={(e) => {
-            setTitle(e.target.value);
-          }}
+          onChange={titleHandler}
         />
         <DiaryContent
           type="text"
           placeholder="일기 내용을 적어주세요~"
           value={content}
           ref={contentInput}
-          onChange={(e) => {
-            setContent(e.target.value);
-          }}
+          onChange={contentHandler}
         />
         <Button
+          type="submit"
           text={"다 썼어요!"}
           borderColor={"#5385e7"}
           onClick={submitHandler}

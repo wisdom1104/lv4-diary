@@ -13,12 +13,6 @@ function Diarys({ data }) {
   const diary = data.find((item) => {
     return item.id === Number(id);
   });
-  const queryClient = useQueryClient();
-  const editMutation = useMutation(editDiary, {
-    onSuccess: () => {
-      queryClient.invalidateQueries("diary");
-    },
-  });
   return (
     <DiaryPage>
       <Stlayout>

@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import { useMutation, useQueryClient } from "react-query";
-import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { editDiary } from "../api/diary";
 import Button from "./Buttons";
 
 function DiaryEdit({ id, data, diary }) {
-  const [editAuthor, setEditAuthor] = useState(diary.author);
+  const [editAuthor, setEditAuthor] = useState(diary.author || "");
   const [editTitle, setEditTitle] = useState(diary.title);
   const [editContent, setEditContent] = useState(diary.content);
   const [edit, setEdit] = useState(false);
