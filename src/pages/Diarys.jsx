@@ -1,4 +1,4 @@
-import { useMutation, useQueryClient } from "react-query";
+import { useMutation } from "react-query";
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import { editDiary } from "../api/diary";
@@ -9,8 +9,9 @@ function Diarys({ data }) {
   const navigate = useNavigate();
   const { id } = useParams();
 
-  // console.log(id);
-  const diary = data.find((item) => {
+  // console.log(id);  const queryClient = useQueryClient();
+
+  const diary = data?.find((item) => {
     return item.id === Number(id);
   });
   return (
