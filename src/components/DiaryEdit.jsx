@@ -4,8 +4,8 @@ import styled from "styled-components";
 import { editDiary } from "../api/diary";
 import Button from "./Buttons";
 
-function DiaryEdit({ id, data, diary }) {
-  const [editAuthor, setEditAuthor] = useState(diary.author || "");
+function DiaryEdit({ id, diary }) {
+  const [editAuthor, setEditAuthor] = useState(diary.author);
   const [editTitle, setEditTitle] = useState(diary.title);
   const [editContent, setEditContent] = useState(diary.content);
   const [edit, setEdit] = useState(false);
@@ -13,9 +13,10 @@ function DiaryEdit({ id, data, diary }) {
   const queryClient = useQueryClient();
   const editMutation = useMutation(editDiary, {
     onSuccess: () => {
-      queryClient.invalidateQueries("diary");
+      queryClient.invalidateQueries("diarys");
     },
   });
+
   return (
     <DiaryBox>
       {!edit ? (
@@ -98,6 +99,7 @@ function DiaryEdit({ id, data, diary }) {
               onClick={() => {
                 const payload = {
                   id: diary.id,
+                  author: editAuthor,
                   title: editTitle,
                   content: editContent,
                 };
